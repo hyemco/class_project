@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- Bootstrap CSS -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD"
+      crossorigin="anonymous"
+    />
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="01_nav_footer.css" />
+    <link rel="stylesheet" href="02_home.css" />
+    <title>Community</title>
+  </head>
+  <body>
+    <!-- 01_nav_footer에서 완성한 Navigation bar & Modal & Footer 코드를 적절한 위치에 사용합니다. -->
+    <nav
+      class="navbar navbar-expand-md bg-dark navbar-dark sticky-top"
+      data-bs-theme="dark"
+    >
+      <div class="container-fluid">
+        <!-- Logo -->
+        <a class="navbar-brand" href="./02_home.html">
+          <img src="./images/logo.png" alt="logo-image" style="width: 130px" />
+        </a>
+
+        <!-- Toggler -->
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarNav"
+          aria-controls="navbarNav"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <!-- Nav List -->
+        <div
+          class="collapse navbar-collapse justify-content-end"
+          id="navbarNav"
+        >
+          <ul class="navbar-nav">
+            <li class="nav-item">
+              <a
+                class="nav-link active"
+                aria-current="page"
+                href="./02_home.html"
+                >Home</a
+              >
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="./03_community.html">Community</a>
+            </li>
+            <li class="nav-item">
+              <a
+                class="nav-link"
+                href="#"
+                data-bs-toggle="modal"
+                data-bs-target="#login_modal"
+                >Login</a
+              >
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Modal -->
+    <div class="modal" tabindex="-1" id="login_modal">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title">Modal title</h5>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+
+          <!-- Login form -->
+          <div class="modal-body">
+            <form>
+              <div class="mb-3">
+                <label for="email" class="form-label">Email address</label>
+                <input
+                  type="email"
+                  class="form-control"
+                  id="email"
+                  placeholder="Enter your email"
+                />
+                <p>We'll neve share your email with anyone else.</p>
+              </div>
+              <div class="mb-3">
+                <label for="password" class="form-label">Password</label>
+                <input
+                  type="password"
+                  class="form-control"
+                  id="password"
+                  placeholder="Enter your password"
+                />
+              </div>
+              <div class="mb-3 form-check">
+                <input type="checkbox" class="form-check-input" id="Check" />
+                <label class="form-check-label" for="exampleCheck1"
+                  >Check me out</label
+                >
+              </div>
+            </form>
+          </div>
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn btn-secondary"
+              data-bs-dismiss="modal"
+            >
+              Close
+            </button>
+            <button type="button" class="btn btn-primary">Login</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 02_home.html -->
+    <header>
+      <div
+        id="carouselExampleSlidesOnly"
+        class="carousel slide"
+        data-bs-ride="carousel"
+      >
+        <div class="carousel-inner">
+          <div class="carousel-item active">
+            <img
+              src="./images/header1.jpg"
+              class="d-block w-100"
+              alt="headr-image1"
+            />
+          </div>
+          <div class="carousel-item">
+            <img
+              src="./images/header2.jpg"
+              class="d-block w-100"
+              alt="headr-image2"
+            />
+          </div>
+          <div class="carousel-item">
+            <img
+              src="./images/header3.jpg"
+              class="d-block w-100"
+              alt="headr-image3"
+            />
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <!-- Title -->
+    <h1 class="d-flex justify-content-center my-5 fw-bold">Boxoffice</h1>
+
+    <!-- Movie cards box -->
+    <section class="mb-4 pb-5">
+      <div class="row row-cols-sm-2 row-cols-md-3 g-4 m-1 m-sm-5">
+        <!-- Movic card 1 -->
+        <article>
+          <div class="col">
+            <div class="card">
+              <img
+                src="./images/movie1.jpg"
+                class="card-img-top"
+                alt="movie-poster-image1"
+              />
+              <div class="card-body">
+                <h5 class="card-title">쇼생크 탈출</h5>
+                <p class="card-text">
+                  This is a longer card with supporting text below as a natural
+                  lead-in to additional content. This content is a little bit
+                  longer.
+                </p>
+              </div>
+            </div>
+          </div>
+        </article>
+        <!-- Movic card 2 -->
+        <article>
+          <div class="col">
+            <div class="card">
+              <img
+                src="./images/movie2.jpg"
+                class="card-img-top"
+                alt="movie-poster-image2"
+              />
+              <div class="card-body">
+                <h5 class="card-title">죽은 시인의 사회</h5>
+                <p class="card-text">
+                  This is a longer card with supporting text below as a natural
+                  lead-in to additional content. This content is a little bit
+                  longer.
+                </p>
+              </div>
+            </div>
+          </div>
+        </article>
+        <!-- Movic card 3 -->
+        <article>
+          <div class="col">
+            <div class="card">
+              <img
+                src="./images/movie3.jpg"
+                class="card-img-top"
+                alt="movie-poster-image3"
+              />
+              <div class="card-body">
+                <h5 class="card-title">다크 나이트 라이즈</h5>
+                <p class="card-text">
+                  This is a longer card with supporting text below as a natural
+                  lead-in to additional content. This content is a little bit
+                  longer.
+                </p>
+              </div>
+            </div>
+          </div>
+        </article>
+        <!-- Movic card 4 -->
+        <article>
+          <div class="col">
+            <div class="card">
+              <img
+                src="./images/movie4.jpg"
+                class="card-img-top"
+                alt="movie-poster-image4"
+              />
+              <div class="card-body">
+                <h5 class="card-title">그랜드 부다페스트 호텔</h5>
+                <p class="card-text">
+                  This is a longer card with supporting text below as a natural
+                  lead-in to additional content. This content is a little bit
+                  longer.
+                </p>
+              </div>
+            </div>
+          </div>
+        </article>
+        <!-- Movic card 5 -->
+        <article>
+          <div class="col">
+            <div class="card">
+              <img
+                src="./images/movie5.jpg"
+                class="card-img-top"
+                alt="movie-poster-image5"
+              />
+              <div class="card-body">
+                <h5 class="card-title">그녀</h5>
+                <p class="card-text">
+                  This is a longer card with supporting text below as a natural
+                  lead-in to additional content. This content is a little bit
+                  longer.
+                </p>
+              </div>
+            </div>
+          </div>
+        </article>
+        <!-- Movic card 6 -->
+        <article>
+          <div class="col">
+            <div class="card">
+              <img
+                src="./images/movie6.jpg"
+                class="card-img-top"
+                alt="movie-poster-image6"
+              />
+              <div class="card-body">
+                <h5 class="card-title">위대한 쇼맨</h5>
+                <p class="card-text">
+                  This is a longer card with supporting text below as a natural
+                  lead-in to additional content. This content is a little bit
+                  longer.
+                </p>
+              </div>
+            </div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- 01_nav_footer 에서 완성한 Footer 코드를 붙여넣어 주세요. -->
+    <!-- Footer -->
+    <footer class="fixed-bottom bg-white d-flex justify-content-center">
+      <p class="text-black fw-bold m-3">Web-bootstrap PJT, by HYEMIN YU</p>
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
+      crossorigin="anonymous"
+    ></script>
+  </body>
+</html>
