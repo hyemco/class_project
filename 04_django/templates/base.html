@@ -1,0 +1,74 @@
+{% load static %} {% load django_bootstrap5 %}
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    {% bootstrap_css %}
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="{% static 'base.css' %}" />
+    <title>Community</title>
+  </head>
+  <body class="d-flex-column justify-content-center align-content-center">
+    <nav
+      class="navbar navbar-expand-md bg-dark navbar-dark sticky-top"
+      data-bs-theme="dark">
+      <div class="container-fluid">
+        <!-- Logo -->
+        <a class="navbar-brand" href="{% url 'movies:index' %}">
+          <img
+            src="{% static 'logo.png' %}"
+            alt="logo-image"
+            class="logo_img"
+          />
+        </a>
+
+        <!-- Toggler -->
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarNav"
+          aria-controls="navbarNav"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <!-- Nav List -->
+        <div
+          class="collapse navbar-collapse justify-content-end"
+          id="navbarNav"
+        >
+          <ul class="navbar-nav">
+            <li class="nav-item">
+              <a
+                class="nav-link active"
+                aria-current="page"
+                href="{% url 'movies:index' %}"
+                >Home</a
+              >
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <main class="w-90">
+      <div class="d-flex justify-content-center mb-5">
+        <img src="{% static 'header.jpg' %}" alt="header-image" class="w-90" />
+      </div>
+
+      {% block content %}{% endblock content %}
+    </main>
+
+    <!-- Footer -->
+    <footer class="fixed-bottom bg-white d-flex justify-content-center">
+      <p class="text-black fw-bold m-3">Web-bootstrap PJT, by HYEMIN YU</p>
+    </footer>
+
+    {% bootstrap_javascript %}
+  </body>
+</html>
