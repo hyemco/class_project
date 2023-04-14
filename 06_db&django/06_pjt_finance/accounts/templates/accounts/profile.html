@@ -1,0 +1,89 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="d-flex justify-content-between">
+  <h1>{{ person.username }}님의 프로필 페이지</h1>
+  <div class="d-flex align-items-center">
+    <div class="me-5">팔로잉 : {{ person.followings.count }} | 팔로워 : {{ person.followers.count }}</div>
+    {% if request.user != person %}
+    <form action="{% url 'accounts:follow' person.pk %}" method="POST">
+      {% csrf_token %}
+      {% if request.user in person.followers.all %}
+      <button class="btn bg-light" type="submit">Unfollow</button>
+      {% else %}
+      <button class="btn bg-light" type="submit">Follow</button>
+      {% endif %}
+    </form>
+    {% endif %}
+  </div>
+</div>
+
+
+<div>
+  <p>회원번호 : {{ person.pk }}</p>
+  <p>유저이름 : {{ person.username }}</p>
+  <p>가입날짜 : {{ person.date_joined }}</p>
+</div>
+
+<hr>
+
+<div>
+  <h2 class="mb-3">유저가 쓴 글</h2>
+  {% if person.board_set.count != 0 %}
+  {% for board in person.board_set.all  %}
+  <div class="p-3 pb-1 mb-3 bg-light">
+  <p>글번호 : {{ board.pk }}</p>
+  <p>글제목 : <a href="{% url 'boards:detail' board.pk %}">{{ board.title }}</a></p>
+  </div>
+  {% endfor %}
+  {% else %}
+  <p>아직 작성한 글 없습니다.</p>
+  {% endif %}
+  <hr>
+</div>
+
+<div>
+  <h2 class="mb-3">유저가 쓴 댓글</h2>
+  {% if person.comment_set.count != 0 %}
+  {% for comment in person.comment_set.all  %}
+  <div class="p-3 pb-1 mb-3 bg-light">
+    <p>글제목 : <a href="{% url 'boards:detail' comment.board.pk %}">{{ comment.board.title }}</a></p>
+    <p>댓글 내용 : {{ comment.content }}</p>
+  </div>
+  {% endfor %}
+  {% else %}
+  <p>아직 작성한 댓글 없습니다.</p>
+  {% endif %}
+  <hr>
+</div>
+
+
+<div>
+  <h2 class="mb-3">유저가 좋아요 누른 글</h2>
+  {% if person.like_boards.count != 0 %}
+  {% for board in person.like_boards.all  %}
+  <div class="p-3 pb-1 mb-3 bg-light">
+    <p>글번호 : {{ board.pk }}</p>
+    <p>글제목 : <a href="{% url 'boards:detail' board.pk %}">{{ board.title }}</a></p>
+    </div>
+  {% endfor %}
+  {% else %}
+  <p>좋아요 누른 글이 없습니다.</p>
+  {% endif %}
+  <hr>
+</div>
+
+<div>
+  <h2 class="mb-3">팔로워</h2>
+  {% if person.followers.count != 0 %}
+  {% for follower in person.followers.all  %}
+  <div class="p-3 pb-1 mb-3 bg-light">
+    <p>유저이름 : <a href="{% url 'accounts:profile' follower.pk %}">{{ follower.username }}</a></p>
+  </div>
+  {% endfor %}
+  {% else %}
+  <p>팔로워 한 사람이 없습니다.</p>
+  {% endif %}
+</div>
+
+{% endblock content %}

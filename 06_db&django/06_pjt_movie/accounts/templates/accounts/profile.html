@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="d-flex justify-content-between">
+  <h1>{{ person.username }}님의 프로필 페이지</h1>
+  <div class="d-flex align-items-center">
+    <div class="me-5">팔로잉 : {{ person.followings.count }} | 팔로워 : {{ person.followers.count }}</div>
+    {% if request.user != person %}
+    <form action="{% url 'accounts:follow' person.username %}" method="POST">
+      {% csrf_token %}
+      {% if request.user in person.followers.all %}
+      <button class="btn bg-light" type="submit">Unfollow</button>
+      {% else %}
+      <button class="btn bg-light" type="submit">Follow</button>
+      {% endif %}
+    </form>
+    {% endif %}
+  </div>
+</div>
+
+<hr>
+
+<div>
+  <h2 class="mb-3">유저가 쓴 글</h2>
+  {% if person.movie_set.count != 0 %}
+  {% for movie in person.movie_set.all  %}
+  <div class="p-3 pb-1 mb-3 bg-light">
+  <p>글번호 : {{ movie.pk }}</p>
+  <p>글제목 : <a href="{% url 'movies:detail' movie.pk %}">{{ movie.title }}</a></p>
+  </div>
+  {% endfor %}
+  {% else %}
+  <p>아직 작성한 글 없습니다.</p>
+  {% endif %}
+  <hr>
+</div>
+<a href="{% url 'movies:index' %}">back</a>
+
+{% endblock content %}

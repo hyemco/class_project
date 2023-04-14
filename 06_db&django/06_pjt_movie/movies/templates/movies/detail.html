@@ -1,0 +1,51 @@
+{% extends 'base.html' %} {% block content %}
+<h1>DETAIL</h1>
+<hr />
+<div><b>{{ movie.title }}</b></div>
+<p>{{ movie.description }}</p>
+{% if movie.user == request.user %}
+<a href="{% url 'movies:update' movie.pk %}">UPDATE</a>
+<form action="{% url 'movies:delete' movie.pk %}" method="POST">
+  {% csrf_token %}
+  <input type="submit" value="DELETE" />
+</form>
+{% endif %}
+<a href="{% url 'movies:index' %}">BACK</a>
+<hr />
+
+<h3>댓글 목록</h3>
+{% for comment in comments %}
+{% if comment.origin_comment == Null %}
+<ul>
+  <div class="d-flex">
+    <li>
+      {{ comment.content }}
+    </li>
+    {% if request.user == comment.user %}
+    <form class="ms-3" action="{% url 'movies:comments_delete' movie.pk comment.pk %}" method="POST">
+      {% csrf_token %}
+      <input type="submit" value="DELETE" />
+    </form>
+    {% endif %}
+    <form class="ms-4" action="{% url 'movies:recomments' movie.pk comment.pk %}" method="POST">
+      {% csrf_token %}
+      {{reply_form}}
+      <input type="submit" value="답글">
+    </form>
+    {% for reply in comment.comments.all %}
+    <ul>
+      <li>{{ reply.content }}</li>
+    </ul>
+    {% endfor %}
+  </div>
+</ul>
+{% endif %}
+{% endfor %}
+<hr />
+<form action="{% url 'movies:comments_create' movie.pk %}" method="POST">
+  {% csrf_token %}
+  {{comment_form}}
+  <input type="submit" value="제출">
+</form>
+
+{% endblock content %}
